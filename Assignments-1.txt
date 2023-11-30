@@ -1,0 +1,23 @@
+What is Emmet?
+-> Emmet is a toolkit or set of plug-ins for text editors that allows high speed coding and editing in HTML/XML/JS,etc.
+Difference between Library & Framework?
+-> 1. Library & Frameworks are both code written by someone else which we can use to do some task in less verbose way.
+   2. A library is like going to Ikea if you want a sofa, you can pick and choose but if you want it to be built from scratch then you'll have to give the control to someone else.
+   3. Library and Frameworks differ in sense of Inversion of Control, we can use a library whereever and whenever we want to in our code. But a framework would define when, where and what is allowed.
+   4. A framework inverts the control of the program, library doesn't do that.
+   5. A framework is in a sense more or less responsible for all of the things needed to build an application, whereas a library would help in setting up some functionality.
+   6. The degree of freedom(subjective terminology) a library or framework gives the developer would define how much it is opinionated, frameworks are more opinionated since Inversion of Control reqires a concession of application design control(attempts to define the level of freedom a dev has on structuring their code).
+What is CDN?
+->    CDN called as Content Delivery/Distribution Network are used to deliver content quickly to end users. It's a geographically distributed network/group of proxy servers and their data centers that caches content close to end users. End goal is to provide high availability and performance by distributing the service spatially relative to end users.
+Why is React called React?
+->  Because it's goal was to help developers build User Interfaces that are fast & Reactive/Responsive.
+What is Crossorigin in Script tag?
+-> It tells that we want to load a resource from another origin/domain/servers, and set the mode of the request to HTTP CORS Request.
+What is difference between react.developement.js & react.production.js files via CDN?
+->  developement version isn't suitable for production, production version is minified/optimized version of react code.
+Async vs Defer
+-> Async & defer are boolean values which are used with script tags, defer is better to use as it gurantees order of execution of scripts.
+    > If none of them are used then HTML Parsing will start, once script tag starts fetching & is executed next HTML parsing is paused and will only resume after fetching and then execution of script is finished.
+    > If async is used then HTML parsing & fetching of the script will happen in parallel, once fetch is finished HTML parsing is paused and execution of script will start and only when execution of script is finished HTML parsing can continue.
+    > If defer is used then HTML parsing and fetching of the script will happen parallely. Only when HTML parsing is finished script execution will start. It's more usable when we want to make sure that these scripts are executed in order in case scripts are interdependent since Defer gurantees Order of Execution of scripts( Async/no attributes don't gurantee any such thing).
+    
