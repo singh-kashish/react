@@ -25,22 +25,43 @@ class Person{
     
     printNameNormalFunction(){
         setTimeout(function(){
-            console.log("normalfn>",this.name);
+            console.log("normalfnName>",this.name);
             console.log("normalFnAge",this.age);
+            console.log('normalThis',this);
         },1000);
     }
     printNameArrowFunction(){
         setTimeout(()=>{
             console.log("arrowFnName>",this.name);
             console.log("arrowAge",this.age);
+            console.log('arrowThis',this);
         },1000);
     }
 }
 // If below 2 declarations of name,age are removed then normal function wouldn't print anything, it still wouldn't print the name since let is used which isn't stored in global scope.
 let name ="ram";
 var age = "3000";
-let nameCaller = new Person("Kashish",25);
-nameCaller.printNameNormalFunction();
-nameCaller.printNameArrowFunction();
-console.log(this.name);
-console.log(age);
+// let nameCaller = new Person("Kashish",25);
+// nameCaller.printNameNormalFunction();
+// nameCaller.printNameArrowFunction();
+// console.log(this.name);
+// console.log(age);
+var obj = {
+    fn: function(){
+        console.log('gn',this);
+    },
+    fn1: ()=>{
+        console.log('gn1',this);
+    }
+};
+// obj.fn(); // obj
+// obj.fn1(); // window
+
+let title = {
+    firstName:"Kashish",
+    lastName: "Singh",
+    printFullName: function(){
+        console.log(this.firstName+"    "+this.lastName);
+    }
+}
+title.printFullName();
