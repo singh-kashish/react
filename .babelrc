@@ -1,0 +1,7 @@
+/**
+Below lines will remove all console.logs
+**/
+{
+    "plugins": [["transform-remove-console",
+    { "exclude": ["error", "warn"] }]]
+  }

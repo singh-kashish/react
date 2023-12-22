@@ -65,3 +65,10 @@ let title = {
     }
 }
 title.printFullName();
+
+var pie = 5;
+{
+    var pie = 10;
+    console.log('blockPie>',pie);
+}
+console.log('GlobalPie>',pie);
