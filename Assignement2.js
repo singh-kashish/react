@@ -13,6 +13,7 @@
     7. What is Hot Module Replacement?
     -> Hot Module Replacement is a technique used by modern JS bundlers which allows them to only build and replace files which've been changed.
     8. List down your 5 favourite superpowers of Parcel and describe any 3.
+<<<<<<< HEAD
     -> File Watcher Algorithm ,
          Hot Module Replacement,
          handles dev & prod build, 
@@ -28,6 +29,10 @@
          compression, 
          zero config setup etc.
         1. File Watcher Algorithm + HMR + Caching while development -> File watcher algorithm watches all the files and HMR will trigger new build for modified files once file watcher algorithm sees any modified file and uses the rest of the available previous unchanged build from cache.
+=======
+    -> File Watcher Algorithm , Hot Module Replacement, Bundling required code together and removing dead/unUsed code using TreeShaking, compressing media/node_modules/etc, adding Polyfills so that this web application is compatible and can be viewed on all required platforms, caching while development, consistent hashing algorithm for all bundling, provides HTTPS on development server, handles port configuration,etc.
+        1. File Watcher Algorithm + HMR + Caching -> File watcher algorithm watches all the files and HMR will trigger new build for modified files once file watcher algorithm sees any modified file and uses the rest of the available previous unchanged build from cache.
+>>>>>>> be5e8114fe5b7964212d8c4c61c98d9351568b60
         2. Compresses/minifies and bundles the files along with Media, node_modules, etc.
         3. Adding Polyfills -> It creates & adds polyfills for compatibility/support with older browser versions(add list of browser versions which must be supported to browsersList). 
     9. What is .gitignore? What should we add & not add into it?
