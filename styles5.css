@@ -1,0 +1,98 @@
+#header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 2px 0px 2px;
+  border-bottom: 1px solid grey;
+  height: 72px;
+  z-index: 50;
+  background-color: rgb(236, 234, 231);
+  position: relative;
+  top: -4px;
+}
+#header > div > img {
+  width: 40px;
+}
+#searchHeader > input {
+  width: 85%;
+  line-height: 30px;
+}
+
+#header > div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+#links > ul > li {
+  list-style: none;
+}
+#links > ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#links > ul > li {
+  padding: 10px;
+  border-right: 1px dashed grey;
+}
+#searchHeader > button {
+  border-radius: 5px;
+  border: 1px solid gray;
+  line-height: 30px;
+  cursor: pointer;
+}
+#restaurantList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 10px;
+  margin: 10px;
+}
+#restaurant > img {
+  width: 18em;
+}
+#restaurant {
+  border-radius: 5px !important;
+  padding: 5px 5px 0px 5px;
+  margin: 8px;
+  cursor: pointer;
+}
+#restaurant:hover {
+  transform: scale(1.25);
+  background-color: #dfd2d2;
+  z-index: 60;
+}
+#restaurant > h3 {
+  font-weight: 600;
+  margin: 4px;
+}
+#restaurant > h5 {
+  margin: 4px;
+}
+#restaurant > h6 {
+  margin: 4px;
+  font-weight: 400;
+}
+#searchHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 500px;
+  min-width: 450px;
+  height: 56px;
+}
+#Footer {
+  background-color: black;
+  height: 100%;
+  color: rgb(173, 172, 172);
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  align-items: center;
+  outline: none;
+  bottom: -5;
+  position: relative;
+}
+#main {
+  width: 100%;
+  margin: 5px 0px;
+}
