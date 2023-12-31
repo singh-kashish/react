@@ -4,13 +4,8 @@
   "description": "Notes and Code ",
   "scripts": {
     "test": "jest",
-<<<<<<< HEAD
     "start": "parcel FoodOrder.html",
     "build": "parcel build FoodOrder.html"
-=======
-    "start": "parcel Assignment2.html",
-    "build": "parcel build Assignment2.html"
->>>>>>> be5e8114fe5b7964212d8c4c61c98d9351568b60
   },
   "author": "Kashish Singh",
   "license": "ISC",
