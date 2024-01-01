@@ -1,0 +1,58 @@
+export let dummyData = [
+  {
+    type: "restaurant",
+    img: "https://b.zmtcdn.com/data/pictures/8/20337148/d8e64b2ed4bdba013d7fd91d87147083_o2_featured_v2.jpg?output-format=webp",
+    name: "BIGGUY's",
+    cuisine: ["lebanese", "american"],
+    rating: 5,
+  },
+  {
+    type: "restaurant",
+    img: "https://b.zmtcdn.com/data/pictures/8/20337148/d8e64b2ed4bdba013d7fd91d87147083_o2_featured_v2.jpg?output-format=webp",
+    name: "BIGGUY's",
+    cuisine: ["lebanese", "american"],
+    rating: 5,
+  },
+  {
+    type: "restaurant",
+    img: "https://b.zmtcdn.com/data/pictures/8/20337148/d8e64b2ed4bdba013d7fd91d87147083_o2_featured_v2.jpg?output-format=webp",
+    name: "BIGGUY's",
+    cuisine: ["lebanese", "american"],
+    rating: 5,
+  },
+  {
+    type: "restaurant",
+    img: "https://b.zmtcdn.com/data/pictures/8/20337148/d8e64b2ed4bdba013d7fd91d87147083_o2_featured_v2.jpg?output-format=webp",
+    name: "BIGGUY's",
+    cuisine: ["lebanese", "american"],
+    rating: 5,
+  },
+  {
+    type: "restaurant",
+    img: "https://b.zmtcdn.com/data/pictures/8/20337148/d8e64b2ed4bdba013d7fd91d87147083_o2_featured_v2.jpg?output-format=webp",
+    name: "BIGGUY's",
+    cuisine: ["lebanese", "american"],
+    rating: 5,
+  },
+  {
+    type: "restaurant",
+    img: "https://b.zmtcdn.com/data/pictures/8/20337148/d8e64b2ed4bdba013d7fd91d87147083_o2_featured_v2.jpg?output-format=webp",
+    name: "BIGGUY's",
+    cuisine: ["lebanese", "american"],
+    rating: 5,
+  },
+  {
+    type: "restaurant",
+    img: "https://b.zmtcdn.com/data/pictures/8/20337148/d8e64b2ed4bdba013d7fd91d87147083_o2_featured_v2.jpg?output-format=webp",
+    name: "BIGGUY's",
+    cuisine: ["lebanese", "american"],
+    rating: 5,
+  },
+  {
+    type: "restaurant",
+    img: "https://b.zmtcdn.com/data/pictures/8/20337148/d8e64b2ed4bdba013d7fd91d87147083_o2_featured_v2.jpg?output-format=webp",
+    name: "BIGGUY's",
+    cuisine: ["lebanese", "american"],
+    rating: 5,
+  },
+];

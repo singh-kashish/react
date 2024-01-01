@@ -58,6 +58,7 @@
 }
 #restaurant:hover {
   transform: scale(1.25);
+  transition-duration: 500ms;
   background-color: #dfd2d2;
   z-index: 60;
 }
