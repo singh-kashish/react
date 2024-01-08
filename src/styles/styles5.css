@@ -12,9 +12,16 @@
 #header > div > img {
   width: 40px;
 }
+#searchHeader{
+  flex:1 1 0%;
+}
 #searchHeader > input {
   width: 85%;
   line-height: 30px;
+  border-radius: 10px;
+  border: 0px;
+  margin-right: 5px;
+  padding-left: 15px;
 }
 
 #header > div {
@@ -33,12 +40,21 @@
 #links > ul > li {
   padding: 10px;
   border-right: 1px dashed grey;
+  cursor: pointer;
 }
 #searchHeader > button {
   border-radius: 5px;
   border: 1px solid gray;
   line-height: 30px;
   cursor: pointer;
+}
+#searchHeader > button:hover {
+  border-radius: 5px;
+  border: 2px solid rgb(74, 74, 74);
+  line-height: 30px;
+  cursor: pointer;
+  transform: scale(1.01);
+  font-weight: 600;
 }
 #restaurantList {
   display: flex;
@@ -76,10 +92,9 @@
 #searchHeader {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  max-width: 500px;
+  justify-content: center;
   min-width: 450px;
-  height: 56px;
+  align-items: center;
 }
 #Footer {
   background-color: black;

@@ -73,5 +73,5 @@ import Body from '../src/components/Body';
 
 const root = ReactDOM.createRoot(document.getElementById("main"));
 
-root.render(<Body></Body>);
+root.render(<Body/>);
 // moved code to separate files/folders.
