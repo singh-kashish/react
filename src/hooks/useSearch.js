@@ -5,7 +5,7 @@ export function useSearch(currentResturants) {
   const filteredRestaurants = useMemo(() => {
     return search ? currentResturants.filter(r => {
       if(r.type==="restaurant"){
-        return r.name.toLowerCase().includes(search.toLowerCase()) || r.cuisine.some(c=>c.toLowerCase().includes(search.toLowerCase()));
+        return r.data.name.toLowerCase().includes(search.toLowerCase()) || r.data.cuisine.some(c=>c.toLowerCase().includes(search.toLowerCase()));
       }
     })
        : currentResturants

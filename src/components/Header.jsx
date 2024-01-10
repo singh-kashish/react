@@ -1,9 +1,11 @@
+import { nameData } from "../config";
+
 let Header = ({search, setSearch}) => {
   return (
     <div id="header">
       <div style={{ marginLeft: "10px" }}>
         <img src="https://t3.ftcdn.net/jpg/02/41/30/72/360_F_241307210_MjjaJC3SJy2zJZ6B7bKGMRsKQbdwRSze.jpg"></img>
-        <p>Zumbato</p>
+        <p>{nameData.data.name}</p>
       </div>
         <form id="searchHeader" onSubmit={(e)=>{
           e.preventDefault();
