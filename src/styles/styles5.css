@@ -12,8 +12,8 @@
 #header > div > img {
   width: 40px;
 }
-#searchHeader{
-  flex:1 1 0%;
+#searchHeader {
+  flex: 1 1 0%;
 }
 #searchHeader > input {
   width: 85%;
@@ -64,13 +64,15 @@
   margin: 10px;
 }
 #restaurant > img {
-  width: 18em;
+  width: 100%;
+  height: 250px;
 }
 #restaurant {
   border-radius: 5px !important;
   padding: 5px 5px 0px 5px;
   margin: 8px;
   cursor: pointer;
+  width: 20%;
 }
 #restaurant:hover {
   transform: scale(1.25);
@@ -84,10 +86,15 @@
 }
 #restaurant > h5 {
   margin: 4px;
+  line-height: 15px;
 }
 #restaurant > h6 {
   margin: 4px;
-  font-weight: 400;
+  font-weight: 600;
+  display: flex;
+  align-items: flex-end;
+  width: 32px;
+  justify-content: space-between;
 }
 #searchHeader {
   display: flex;
@@ -111,4 +118,10 @@
 #main {
   width: 100%;
   margin: 5px 0px;
+}
+#loginButton {
+  border: 2px solid grey;
+  border-radius: 10px;
+  margin: 10px 0px 10px 2px;
+  cursor: pointer;
 }
