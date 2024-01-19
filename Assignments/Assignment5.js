@@ -67,11 +67,4 @@ Index Keys as Anti-Pattern: https://robinpokorny.com/blog/index-as-a-key-is-an-a
 */
 }
 
-import React from "react";
-import ReactDOM from "react-dom/client";
-import Body from '../src/components/Body';
-
-const root = ReactDOM.createRoot(document.getElementById("main"));
-
-root.render(<Body/>);
 // moved code to separate files/folders.

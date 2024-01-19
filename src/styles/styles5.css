@@ -1,6 +1,7 @@
 #header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 0px 2px 0px 2px;
   border-bottom: 1px solid grey;
   height: 72px;
@@ -9,11 +10,16 @@
   position: relative;
   top: -4px;
 }
-#header > div > img {
+#header > a > div > img {
   width: 40px;
 }
 #searchHeader {
   flex: 1 1 0%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  min-width: 450px;
+  align-items: center;
 }
 #searchHeader > input {
   width: 85%;
@@ -24,7 +30,7 @@
   padding-left: 15px;
 }
 
-#header > div {
+#header > a > div {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -72,7 +78,7 @@
   padding: 5px 5px 0px 5px;
   margin: 8px;
   cursor: pointer;
-  width: 20%;
+  width: 200px;
 }
 #restaurant:hover {
   transform: scale(1.25);
@@ -96,13 +102,7 @@
   width: 32px;
   justify-content: space-between;
 }
-#searchHeader {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  min-width: 450px;
-  align-items: center;
-}
+
 #Footer {
   background-color: black;
   height: 100%;

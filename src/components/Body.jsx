@@ -1,40 +1,47 @@
 import React, { useState, useEffect } from "react";
-import Header from "./Header";
 import RestaurantList from "./RestaurantList";
-import Footer from "./Footer";
-import { useSearch } from "../hooks/useSearch.js";
-import { apiUrl } from "../config.js";
 import { useGeoCoordinates } from "../hooks/useGeoCoordinates.js";
+import { useGetRestaurantsFromSwiggy } from "../hooks/useGetRestaurantsFromSwiggy.js";
+import { useOutletContext } from "react-router-dom";
+import ApiError from "./ApiError.jsx";
 
 let Body = () => {
-  const [allRestaurants, setAllRestaurants] = useState();
-  const [filteredRestaurants, setFilteredRestaurants] =
-    useState(allRestaurants);
-  const { searchedRestaurants, search, setSearch } =
-    useSearch(filteredRestaurants);
+  const [searchedRestaurants, setFilteredRestaurants] = useOutletContext();
+  const [geoPosition, setGeoPosition] = useState({});
+  const [apiErrorBool, setApiErrorBool] = useState(false);
+  const [apiErrorMsg, setApiErrorMsg] = useState("");
   useEffect(() => {
     useGeoCoordinates()
-      .then((result) =>
-        getRestaurantsFromSwiggy(result.latitude, result.longitude)
-      )
-      .catch((err) => console.error(err));
+      .then((result) => {
+        useGetRestaurantsFromSwiggy(
+          result.latitude,
+          result.longitude,
+          setFilteredRestaurants
+        )
+        .then((res) => {
+          setApiErrorBool(false);
+        })
+        .catch((err) => {
+          setApiErrorBool(true);
+          setApiErrorMsg(err?.message);
+          throw(err?.message);
+        });
+        setGeoPosition(result);
+      })
+      .catch((err) => {
+        setApiErrorBool(true);
+        setApiErrorMsg(err.message);
+        console.error(err.message);
+      });
   }, []);
 
-  async function getRestaurantsFromSwiggy(userLat, userLong) {
-    let apiResult = await fetch(`${apiUrl}${userLat}&lng=${userLong}`);
-    let finalResult = await apiResult.json();
-    setFilteredRestaurants(
-      finalResult?.data?.success?.cards[1]?.gridWidget?.gridElements
-        ?.infoWithStyle?.restaurants
-    );
-    return finalResult;
-  }
-  return (
-    <div>
-      <Header search={search} setSearch={setSearch} />
-      <RestaurantList restaurants={searchedRestaurants} />
-      <Footer />
-    </div>
+  return apiErrorBool === false ? (
+    <RestaurantList
+      restaurants={searchedRestaurants}
+      geoPosition={geoPosition}
+    />
+  ) : (
+    <ApiError msg={apiErrorMsg} />
   );
 };
 export default Body;

@@ -1,14 +1,17 @@
 import { useState } from "react";
 import { nameData } from "../config";
+import { Link } from "react-router-dom";
+import Logo from '../assets/images/foodLogo.jpg';
 
-let Header = ({ search, setSearch }) => {
-  let [isLoggedIn, setIsLoggedIn] = useState(false);
+let Header = ({ search, setSearch,isLoggedIn,setIsLoggedIn }) => {
   return (
     <div id="header">
-      <div style={{ marginLeft: "10px" }}>
-        <img src="https://t3.ftcdn.net/jpg/02/41/30/72/360_F_241307210_MjjaJC3SJy2zJZ6B7bKGMRsKQbdwRSze.jpg"></img>
-        <p>{nameData.data.name}</p>
-      </div>
+      <Link to="/">
+        <div style={{ marginLeft: "10px" }}>
+          <img src={Logo} />
+          <p>{nameData.data.name}</p>
+        </div>
+      </Link>
       <form
         id="searchHeader"
         onSubmit={(e) => {
@@ -29,20 +32,24 @@ let Header = ({ search, setSearch }) => {
       </form>
       <div id="links">
         <ul>
-          <li>About</li>
-          <li>Home</li>
-          <li>Call</li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/contact">Contact</Link>
+          </li>
         </ul>
       </div>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          setIsLoggedIn(!isLoggedIn);
-        }}
-        id="loginButton"
-      >
-        {isLoggedIn ? "Log out" : "Login"}
-      </button>
+      <Link to="/auth" state={
+        {s: isLoggedIn}
+      } >
+        <button id="loginButton">
+          {isLoggedIn ? "Log out" : "Login"}
+        </button>
+      </Link>
     </div>
   );
 };

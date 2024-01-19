@@ -1,15 +1,19 @@
 import Restaurant from "./Restaurant";
-import { ShimmerPostList } from "react-shimmer-effects";
-
-let RestaurantList = ({ restaurants }) => {
+import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
+let RestaurantList = ({ restaurants, geoPosition }) => {
   return (
     <div id="restaurantList">
       {restaurants ? (
-        restaurants.map((rest, index) => {
-          return <Restaurant {...rest} key={index} />;
+        restaurants?.map((rest, index) => {
+          return (
+            <Link to={`/restaurants/${rest?.info?.id}`} key={index} state={geoPosition}>
+              <Restaurant {...rest} geoPosition />
+            </Link>
+          );
         })
       ) : (
-        <ShimmerPostList postStyle="STYLE_FOUR" col={3} row={3} gap={30} />
+        <Shimmer />
       )}
     </div>
   );

@@ -1,0 +1,134 @@
+.shimmer-item {
+  width: 300px;
+  height: 250px;
+  margin: 10px;
+  background: linear-gradient(-45deg, #eee 40%, #fafafa 50%, #eee 60%);
+  background-size: 300%;
+  background-position-x: 100%;
+  animation: shimmer 1s infinite linear;
+}
+
+#links > ul > li > a {
+  text-decoration: none;
+  color: black;
+}
+@keyframes shimmer {
+  to {
+    background-position-x: 0%;
+  }
+}
+#header > a {
+  text-decoration: none;
+  color: black;
+}
+.restaurantView {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+}
+.restaurantHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+#restaurantDetails {
+  width: 100%;
+  margin-left: 10px;
+}
+#restaurantName {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+  border-bottom: 1px dotted rgb(221, 208, 191);
+}
+#restaurantList > a {
+  text-decoration: none;
+  color: black;
+  z-index: 500;
+}
+#ratings {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  border: 1px solid #e9e9eb;
+  box-shadow: 0 1px 5px #f9f9f9;
+  border-radius: 6px;
+  text-align: center;
+  padding: 8px;
+  max-width: 100px;
+  margin-bottom: 2px;
+}
+#ratings > h4 {
+  border-bottom: 1px dotted lightcoral;
+  margin-bottom: 2px;
+  color: rgb(51, 183, 51);
+  text-align: center;
+}
+#ratings > h5 {
+  margin-top: 2px;
+  font-weight: 600;
+  font-size: 11px;
+  color: #8b8d97;
+}
+#auth {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 300px;
+}
+#auth > button {
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid gray;
+  cursor: pointer;
+}
+#auth > button:hover {
+  background-color: lightgray;
+}
+#restaurantDetails {
+  display: flex;
+  flex-direction: column;
+}
+#coupons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+#coupon {
+  z-index: 2;
+  box-shadow: 1px 1px #8b8d97;
+  background-color: rgb(255, 225, 215);
+  height: 50px;
+  padding: 5px;
+  margin: 10px;
+  border-radius: 5px;
+  font-weight: 600;
+}
+#item-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  box-shadow: 2px 2px 2px 1px #8b8d97;
+  border-radius: 5px;
+  height: 200px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  padding: 5px;
+}
+#item-card:hover{
+  background-color: #b4b7c7;
+}
+.foodMenu {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}

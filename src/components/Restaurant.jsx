@@ -1,4 +1,6 @@
 import Stars from "./Stars";
+import {mediaUrl} from "../config";
+
 let Restaurant = (restaurant) => {
   return (
     <div id="restaurant">
@@ -7,7 +9,7 @@ let Restaurant = (restaurant) => {
         src={
           restaurant.info.img
             ? restaurant.info.img
-            : `https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${restaurant.info.cloudinaryImageId}`
+            : `${mediaUrl}${restaurant.info.cloudinaryImageId}`
         }
       />
       <h3>{restaurant.info.name}</h3>
