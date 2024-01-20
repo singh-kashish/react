@@ -1,6 +1,7 @@
 import React from "react";
 class Profile extends React.Component {
   constructor(props) {
+    console.log('constructor child 1 called');
     super(props);
     this.state = {
       url: "https://api.github.com/users/singh-kashish",
@@ -8,6 +9,7 @@ class Profile extends React.Component {
     };
   }
   render() {
+    console.log('child 1 render method called');
     return (
       <div
         style={{
@@ -39,6 +41,7 @@ class Profile extends React.Component {
     );
   }
   async componentDidMount() {
+    console.log('componentDidMount child1/Profile called');
     let profileData = await fetch(this.state.url);
     let usableData = await profileData.json();
     console.log(usableData);
