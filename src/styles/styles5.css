@@ -84,7 +84,7 @@
   transform: scale(1.25);
   transition-duration: 500ms;
   background-color: #dfd2d2;
-  z-index: 60;
+  z-index: 3;
 }
 #restaurant > h3 {
   font-weight: 600;

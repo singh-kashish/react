@@ -1,14 +1,14 @@
-import { useState } from "react";
 import { nameData } from "../config";
 import { Link } from "react-router-dom";
 import Logo from '../assets/images/foodLogo.jpg';
-
+import useOnline from "../hooks/useOnline";
 let Header = ({ search, setSearch,isLoggedIn,setIsLoggedIn }) => {
+  let networkStatus = useOnline();
   return (
     <div id="header">
       <Link to="/">
         <div style={{ marginLeft: "10px" }}>
-          <img src={Logo} />
+          <img src={Logo} alt="headerLogo" />
           <p>{nameData.data.name}</p>
         </div>
       </Link>
@@ -30,6 +30,7 @@ let Header = ({ search, setSearch,isLoggedIn,setIsLoggedIn }) => {
         />
         <button type="submit">Search</button>
       </form>
+      {networkStatus ? "🟢" : "🔴"}
       <div id="links">
         <ul>
           <li>
@@ -43,12 +44,8 @@ let Header = ({ search, setSearch,isLoggedIn,setIsLoggedIn }) => {
           </li>
         </ul>
       </div>
-      <Link to="/auth" state={
-        {s: isLoggedIn}
-      } >
-        <button id="loginButton">
-          {isLoggedIn ? "Log out" : "Login"}
-        </button>
+      <Link to="/auth" state={{ s: isLoggedIn }}>
+        <button id="loginButton">{isLoggedIn ? "Log out" : "Login"}</button>
       </Link>
     </div>
   );

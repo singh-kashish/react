@@ -7,7 +7,11 @@ let RestaurantList = ({ restaurants, geoPosition }) => {
       {restaurants ? (
         restaurants?.map((rest, index) => {
           return (
-            <Link to={`/restaurants/${rest?.info?.id}`} key={index} state={geoPosition}>
+            <Link
+              to={`/restaurants/${rest?.info?.id}`}
+              key={rest?.info?.id}
+              state={geoPosition}
+            >
               <Restaurant {...rest} geoPosition />
             </Link>
           );

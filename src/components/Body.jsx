@@ -1,47 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import RestaurantList from "./RestaurantList";
-import { useGeoCoordinates } from "../hooks/useGeoCoordinates.js";
-import { useGetRestaurantsFromSwiggy } from "../hooks/useGetRestaurantsFromSwiggy.js";
 import { useOutletContext } from "react-router-dom";
 import ApiError from "./ApiError.jsx";
+import useGetAllRestaurants from "../hooks/useGetAllRestaurants.js";
 
 let Body = () => {
   const [searchedRestaurants, setFilteredRestaurants] = useOutletContext();
-  const [geoPosition, setGeoPosition] = useState({});
-  const [apiErrorBool, setApiErrorBool] = useState(false);
-  const [apiErrorMsg, setApiErrorMsg] = useState("");
-  useEffect(() => {
-    useGeoCoordinates()
-      .then((result) => {
-        useGetRestaurantsFromSwiggy(
-          result.latitude,
-          result.longitude,
-          setFilteredRestaurants
-        )
-        .then((res) => {
-          setApiErrorBool(false);
-        })
-        .catch((err) => {
-          setApiErrorBool(true);
-          setApiErrorMsg(err?.message);
-          throw(err?.message);
-        });
-        setGeoPosition(result);
-      })
-      .catch((err) => {
-        setApiErrorBool(true);
-        setApiErrorMsg(err.message);
-        console.error(err.message);
-      });
-  }, []);
-
-  return apiErrorBool === false ? (
+  const ans = useGetAllRestaurants(setFilteredRestaurants);
+  const { latitude, longitude } = ans.location;
+  if (ans.locationError !== "No location error") {
+    return <h1>Please allow us to read your location.</h1>;
+  }
+  return ans.restaurants.error === false ? (
     <RestaurantList
       restaurants={searchedRestaurants}
-      geoPosition={geoPosition}
+      geoPosition={{ latitude, longitude }}
     />
   ) : (
-    <ApiError msg={apiErrorMsg} />
+    <ApiError msg={ans.error} />
   );
 };
 export default Body;
