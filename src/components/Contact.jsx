@@ -14,15 +14,10 @@ class Contact extends React.Component {
     console.log("Render contact called");
     return (
       <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
+        className="flex flex-col items-center justify-center h-svh"
       >
-        <h3>Contact me on LinkedIn @kashish-singh111</h3>
-        <a href="/contact/profile">Click here to go to Profile route</a>
+        <h3 className="font-semibold">Contact me on LinkedIn @kashish-singh111</h3>
+        <a href="/contact/profile" className="text-blue-500">Click here to go to Profile route</a>
         <Outlet />
         <ChildClassComponent numb="2" />
       </div>

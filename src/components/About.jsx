@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <div style={{display:"flex",justifyContent: "center"}}>
+    <div className="flex justify-center items-center h-lvh bg-slate-100">
       <h1>This project is made for Learning purposes, I don't own Swiggy's API</h1>
     </div>
   );

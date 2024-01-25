@@ -1,14 +1,6 @@
 const RestaurantShimmer = () => {
   return (
-    <div
-      className=""
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        justifyContent: "flex-start",
-        width: "100%",
-        height: "100%",
-      }}
+    <div className="flex justify-start w-full h-lvh"
     >
       <div
         className="shimmer-item"

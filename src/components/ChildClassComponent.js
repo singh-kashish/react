@@ -19,6 +19,7 @@ class ChildClassComponent extends Component {
             let newVal = Number(this.state.child) + 1;
             this.setState({ child: newVal });
           }}
+          className="px-6 py-2 border-gray-500 bg-neutral-400 rounded-xl hover:bg-neutral-500"
         >
           {this.state.child}
         </button>
