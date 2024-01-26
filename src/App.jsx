@@ -12,6 +12,7 @@ import Error from "./components/Error";
 import ViewRestaurant from "./components/ViewRestaurant";
 import Auth from "./components/Auth";
 import Shimmer from "./components/Shimmer.jsx";
+import UserContext from "./hooks/context/UserContext.js";
 
 const Profile = lazy(() => import("./components/Profile.jsx"));
 const Accordion = lazy(() => import("./components/Accordion.jsx"));
@@ -22,26 +23,25 @@ const App = () => {
   const { searchedRestaurants, search, setSearch } =
     useSearch(filteredRestaurants);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState({email:null,password:null});
   return (
-    <>
-      <RestaurantContext.Provider value={{ searchedRestaurants, search }}>
-        <Header
-          search={search}
-          setSearch={setSearch}
-          isLoggedIn={isLoggedIn}
-          setIsLoggedIn={setIsLoggedIn}
-        />
-        <Outlet
-          context={[
-            searchedRestaurants,
-            setFilteredRestaurants,
-            isLoggedIn,
-            setIsLoggedIn,
-          ]}
-        />
-      </RestaurantContext.Provider>
-      <Footer />
-    </>
+      <UserContext.Provider value={{user,setUser,isLoggedIn,setIsLoggedIn}}>
+        <RestaurantContext.Provider
+          value={{ searchedRestaurants, search, setSearch }}
+        >
+          <Header
+            search={search}
+            setSearch={setSearch}
+          />
+          <Outlet
+            context={[
+              searchedRestaurants,
+              setFilteredRestaurants,
+            ]}
+          />
+        </RestaurantContext.Provider>
+        <Footer />
+      </UserContext.Provider>
   );
 };
 const router = createBrowserRouter([

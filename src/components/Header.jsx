@@ -1,14 +1,15 @@
 import { nameData } from "../config";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Logo from "../assets/images/foodLogo.jpg";
 import useOnline from "../hooks/useOnline";
 import { useContext } from "react";
 import RestaurantContext from "../hooks/context/RestaurantContext";
-let Header = ({ search, setSearch, isLoggedIn, setIsLoggedIn }) => {
+import UserContext from "../hooks/context/UserContext";
+let Header = () => {
   let networkStatus = useOnline();
-  let rest = useContext(RestaurantContext);
+  let { search, setSearch, searchedResults } = useContext(RestaurantContext);
   let navigate = useNavigate();
-  console.log(rest);
+  let {isLoggedIn, setIsLoggedIn, user, setUser}=useContext(UserContext);
   return (
     <div className="flex flex-row justify-between items-center bg-orange-100 z-30 h-14 px-1 border-b-[1px] border-b-slate-400 sticky top-[0px]">
       <Link to="/">
@@ -25,7 +26,7 @@ let Header = ({ search, setSearch, isLoggedIn, setIsLoggedIn }) => {
           const formdata = new FormData(e.target);
           const input = formdata.get("search");
           setSearch(input);
-          navigate('./');
+          navigate("./");
         }}
       >
         <input
@@ -62,7 +63,10 @@ let Header = ({ search, setSearch, isLoggedIn, setIsLoggedIn }) => {
         <button
           id="loginButton"
           onClick={(e) => {
-            if (isLoggedIn) setIsLoggedIn(false);
+            if (isLoggedIn) {
+              setIsLoggedIn(false);
+              setUser({});
+            }
           }}
           className="border-gray-400 my-2.5 border-solid border-[1px] rounded-lg px-2 py-1 ml-1"
         >
