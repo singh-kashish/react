@@ -3,7 +3,7 @@ const RestaurantShimmer = () => {
     <div className="flex justify-start w-full h-lvh"
     >
       <div
-        className="shimmer-item"
+        className="shimmerItem"
         style={{ width: "50%", height: "100em" }}
       ></div>
       <div>
@@ -12,7 +12,7 @@ const RestaurantShimmer = () => {
           .map((element, index) => {
             return (
               <div
-                className="shimmer-item"
+                className="shimmerItem"
                 key={index}
                 style={{ width: "3000%" }}
               >

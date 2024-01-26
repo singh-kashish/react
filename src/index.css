@@ -1,3 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components{
+    .shimmerItem{
+        width: 300px;
+        height: 250px;
+        margin: 10px;
+        background: linear-gradient(-45deg, #eee 40%, #fafafa 50%, #eee 60%);
+        background-size: 300%;
+        background-position-x: 100%;
+        animation: shimmer 1s infinite linear;
+    }
+    @keyframes shimmer {
+        to {
+            background-position-x: 0%;
+        }
+}
+}

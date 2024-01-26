@@ -5,6 +5,7 @@ import Header from "./components/Header";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import RestaurantContext from "./hooks/context/RestaurantContext.js";
 import { useSearch } from "./hooks/useSearch";
 import Body from "./components/Body";
 import Error from "./components/Error";
@@ -13,6 +14,7 @@ import Auth from "./components/Auth";
 import Shimmer from "./components/Shimmer.jsx";
 
 const Profile = lazy(() => import("./components/Profile.jsx"));
+const Accordion = lazy(() => import("./components/Accordion.jsx"));
 const App = () => {
   const [allRestaurants, setAllRestaurants] = useState();
   const [filteredRestaurants, setFilteredRestaurants] =
@@ -22,20 +24,22 @@ const App = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   return (
     <>
-      <Header
-        search={search}
-        setSearch={setSearch}
-        isLoggedIn={isLoggedIn}
-        setIsLoggedIn={setIsLoggedIn}
-      />
-      <Outlet
-        context={[
-          searchedRestaurants,
-          setFilteredRestaurants,
-          isLoggedIn,
-          setIsLoggedIn,
-        ]}
-      />
+      <RestaurantContext.Provider value={{ searchedRestaurants, search }}>
+        <Header
+          search={search}
+          setSearch={setSearch}
+          isLoggedIn={isLoggedIn}
+          setIsLoggedIn={setIsLoggedIn}
+        />
+        <Outlet
+          context={[
+            searchedRestaurants,
+            setFilteredRestaurants,
+            isLoggedIn,
+            setIsLoggedIn,
+          ]}
+        />
+      </RestaurantContext.Provider>
       <Footer />
     </>
   );
@@ -67,6 +71,14 @@ const router = createBrowserRouter([
             ),
           },
         ],
+      },
+      {
+        path: "/accordion",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Accordion />
+          </Suspense>
+        ),
       },
       {
         path: "/restaurants/:id",
