@@ -2,7 +2,6 @@ import ItemCard from "./ItemCard";
 
 let ViewRestaurantCard = (restaurant) => {
   let restaurantList = restaurant.restaurant;
-  console.log(restaurantList);
   return (
     <div>
       <h2 className="font-bold">{`${

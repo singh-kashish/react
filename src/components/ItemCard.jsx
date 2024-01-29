@@ -2,7 +2,15 @@ import Stars from "./Stars";
 import NonVeg from "./NonVeg";
 import Veg from "./Veg";
 import { mediaUrl } from "../config";
-let ItemCard = ({ item }) => {
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, removeItemFromCart } from "../utils/slices/cartSlice";
+
+const ItemCard = ({ item }) => {
+  const dispatch = useDispatch();
+  let cartItems = useSelector((store) => store.cart.cartItems);
+  let doesCartItemExist = cartItems.find((obj) => obj.item.id === item.id);
+  let quantity = 0;
+  if (doesCartItemExist) quantity = doesCartItemExist.quantity;
   return (
     <div
       id="item-card"
@@ -25,13 +33,29 @@ let ItemCard = ({ item }) => {
           </div>
           <div>({item?.ratings?.aggregatedRating?.ratingCountV2})</div>
         </p>
-        <p className="font-mono font-extralight">{item?.description}</p>
+        <p className="font-mono font-extralight text-wrap">
+          {item?.description}
+        </p>
       </div>
-      <div className="h-full">
+      <div className="h-full flex flex-col items-center">
         <img
-          className="h-3/4 rounded-md "
+          className="h-3/4 rounded-md relative"
           src={`${mediaUrl}${item.imageId}`}
         />
+        {quantity !== 0 ? (
+          <div className="bg-orange-50 font-bold text-green-200 flex items-center border border-slate-400">
+            <p className="text-gray-400 px-2 py-1" onClick={()=>dispatch(removeItemFromCart(item))}>-</p>
+            {quantity}
+            <p className="text-green-400 px-2 py-1" onClick={()=>dispatch(addToCart(item))}>+</p>
+          </div>
+        ) : (
+          <button
+            className="z-10 rounded-lg px-2 py-1 bg-green-600 hover:bg-green-400 text-amber-400"
+            onClick={() => dispatch(addToCart(item))}
+          >
+            ADD
+          </button>
+        )}
       </div>
     </div>
   );

@@ -13,9 +13,13 @@ import ViewRestaurant from "./components/ViewRestaurant";
 import Auth from "./components/Auth";
 import Shimmer from "./components/Shimmer.jsx";
 import UserContext from "./hooks/context/UserContext.js";
+import { Provider } from "react-redux";
+import store from "./utils/store.js";
+import Cart from "./components/Cart.jsx";
 
 const Profile = lazy(() => import("./components/Profile.jsx"));
 const Accordion = lazy(() => import("./components/Accordion.jsx"));
+
 const App = () => {
   const [allRestaurants, setAllRestaurants] = useState();
   const [filteredRestaurants, setFilteredRestaurants] =
@@ -23,25 +27,21 @@ const App = () => {
   const { searchedRestaurants, search, setSearch } =
     useSearch(filteredRestaurants);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState({email:null,password:null});
+  const [user, setUser] = useState({ email: null, password: null });
   return (
-      <UserContext.Provider value={{user,setUser,isLoggedIn,setIsLoggedIn}}>
+    <Provider store={store}>
+      <UserContext.Provider
+        value={{ user, setUser, isLoggedIn, setIsLoggedIn }}
+      >
         <RestaurantContext.Provider
           value={{ searchedRestaurants, search, setSearch }}
         >
-          <Header
-            search={search}
-            setSearch={setSearch}
-          />
-          <Outlet
-            context={[
-              searchedRestaurants,
-              setFilteredRestaurants,
-            ]}
-          />
+          <Header search={search} setSearch={setSearch} />
+          <Outlet context={[searchedRestaurants, setFilteredRestaurants]} />
         </RestaurantContext.Provider>
         <Footer />
       </UserContext.Provider>
+    </Provider>
   );
 };
 const router = createBrowserRouter([
@@ -87,6 +87,10 @@ const router = createBrowserRouter([
       {
         path: "auth",
         element: <Auth />,
+      },
+      {
+        path: "cart",
+        element: <Cart />,
       },
     ],
   },

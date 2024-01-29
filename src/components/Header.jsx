@@ -5,11 +5,16 @@ import useOnline from "../hooks/useOnline";
 import { useContext } from "react";
 import RestaurantContext from "../hooks/context/RestaurantContext";
 import UserContext from "../hooks/context/UserContext";
-let Header = () => {
+import { useSelector } from "react-redux";
+import CartLogo from "../assets/images/shopping_cart.png";
+
+const Header = () => {
   let networkStatus = useOnline();
   let { search, setSearch, searchedResults } = useContext(RestaurantContext);
   let navigate = useNavigate();
-  let {isLoggedIn, setIsLoggedIn, user, setUser}=useContext(UserContext);
+  let { isLoggedIn, setIsLoggedIn, user, setUser } = useContext(UserContext);
+  // subscribe to cart slice of redux-store
+  let cart = useSelector((store) => store.cart.cartItems);
   return (
     <div className="flex flex-row justify-between items-center bg-orange-100 z-30 h-14 px-1 border-b-[1px] border-b-slate-400 sticky top-[0px]">
       <Link to="/">
@@ -19,7 +24,7 @@ let Header = () => {
         </div>
       </Link>
       <form
-        className="flex lg:grow flex-row align-center justify-center lg:min-w-[450px] shrink-0 basis-3/5"
+        className="flex lg:grow flex-row align-center justify-center lg:min-w-[450px] shrink-0 xl:basis-1/2"
         onSubmit={(e) => {
           e.preventDefault();
           console.warn(e);
@@ -56,6 +61,20 @@ let Header = () => {
           </li>
           <li>
             <Link to="/accordion">Accordion</Link>
+          </li>
+          <li>
+            <Link to="/cart" className="flex items-center ">
+              {cart?.length > 0 ? (
+                <span className="rounded-full bg-orange-200 px-2 mr-1">
+                  {cart.length}
+                </span>
+              ) : (
+                ""
+              )}
+
+              <img src={CartLogo} alt="cartLogo" className="size-5" />
+              <p>Cart</p>
+            </Link>
           </li>
         </ul>
       </div>

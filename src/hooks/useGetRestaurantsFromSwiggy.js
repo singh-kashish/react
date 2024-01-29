@@ -7,7 +7,7 @@ const useGetRestaurantsFromSwiggy = ({
   setFilteredRestaurants,
 }) => {
   const [error, setError] = useState(false);
-  const [restaurants, setRestaurants] = useState('');
+  const [restaurants, setRestaurants] = useState("");
   async function getRestaurantsFromSwiggy(
     userLat,
     userLong,
@@ -15,6 +15,8 @@ const useGetRestaurantsFromSwiggy = ({
   ) {
     try {
       let apiResult = await fetch(`${apiUrl}${userLat}&lng=${userLong}`);
+      console.log("url>", `${apiUrl}${userLat}&lng=${userLong}`);
+      console.log("res", apiResult);
       let finalResult = await apiResult.json();
       setFilteredRestaurants(
         finalResult?.data?.success?.cards[1]?.gridWidget?.gridElements
@@ -27,11 +29,13 @@ const useGetRestaurantsFromSwiggy = ({
     } catch (error) {
       setError(error.message);
       console.error(error.message);
+      console.log(error);
     }
   }
   useEffect(() => {
-    if(typeof(userLat) !== 'undefined' && typeof userLong !== 'undefined')getRestaurantsFromSwiggy(userLat,userLong,setFilteredRestaurants);
+    if (typeof userLat !== "undefined" && typeof userLong !== "undefined")
+      getRestaurantsFromSwiggy(userLat, userLong, setFilteredRestaurants);
   }, [userLat]);
-  return {restaurants, error};
+  return { restaurants, error };
 };
 export default useGetRestaurantsFromSwiggy;
