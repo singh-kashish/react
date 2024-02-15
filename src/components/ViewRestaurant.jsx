@@ -6,7 +6,7 @@ import RestaurantShimmer from "./RestaurantShimmer.jsx";
 import ApiError from "./ApiError.jsx";
 import useGetRestaurant from "../hooks/useGetResaturant.js";
 
-let ViewRestaurant = () => {
+const ViewRestaurant = () => {
   let { restaurantData, apiErrorData, menu } = useGetRestaurant();
   if (restaurantData === null && apiErrorData === null)
     return <RestaurantShimmer />;
@@ -48,7 +48,7 @@ let ViewRestaurant = () => {
             <div id="coupons" className="flex justify-start">
               {restaurantData?.aggregatedDiscountInfoV2?.shortDescriptionList?.map(
                 (e, index) => (
-                  <Coupon text={e} key={index} />
+                  <Coupon text={e} key={e.text} />
                 )
               )}
             </div>

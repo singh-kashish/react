@@ -2,6 +2,10 @@
 Below lines will remove all console.logs
 **/
 {
-    "plugins": [["transform-remove-console",
-    { "exclude": ["error", "warn","log"] }]]
-  }
+  "presets": [["@babel/preset-env", {"targets":{"node":"current"}}],
+  ["@babel/preset-react",{"runtime":"automatic"}]
+  ],
+  "plugins": [
+    ["transform-remove-console", { "exclude": ["error", "warn", "log"] }]
+  ]
+}

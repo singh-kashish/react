@@ -19,7 +19,12 @@ const Header = () => {
     <div className="flex flex-row justify-between items-center bg-orange-100 z-30 h-14 px-1 border-b-[1px] border-b-slate-400 sticky top-[0px]">
       <Link to="/">
         <div className="ml-2.5 flex items-center justify-start">
-          <img src={Logo} alt="headerLogo" className="w-10" />
+          <img
+            src={Logo}
+            alt="headerLogo"
+            className="w-10"
+            data-testid="logo"
+          />
           <p>{nameData.data.name}</p>
         </div>
       </Link>
@@ -47,7 +52,7 @@ const Header = () => {
           Search
         </button>
       </form>
-      {networkStatus ? "🟢" : "🔴"}
+      <p data-testid="isOnline">{networkStatus ? "🟢" : "🔴"}</p>
       <div id="links">
         <ul className="flex justify-between list-none *:p-2.5 *:border-r-[1px] *:border-dashed *:border-gray-400">
           <li>
@@ -62,20 +67,18 @@ const Header = () => {
           <li>
             <Link to="/accordion">Accordion</Link>
           </li>
-          <li>
-            <Link to="/cart" className="flex items-center ">
-              {cart?.length > 0 ? (
-                <span className="rounded-full bg-orange-200 px-2 mr-1">
-                  {cart.length}
-                </span>
-              ) : (
-                ""
-              )}
+
+          <Link to="/cart">
+            <li className="flex items-center ">
+            <span className="rounded-full bg-orange-200 px-2 mr-1" data-testid="cartLength">
+              {cart?.length > 0 ? cart?.length : 0
+              }
+              </span>
 
               <img src={CartLogo} alt="cartLogo" className="size-5" />
               <p>Cart</p>
-            </Link>
-          </li>
+            </li>
+          </Link>
         </ul>
       </div>
       <Link to="/auth" state={{ s: isLoggedIn }}>

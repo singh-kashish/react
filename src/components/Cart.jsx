@@ -3,7 +3,6 @@ import ItemCard from "./ItemCard.jsx";
 import { clearCart } from "../utils/slices/cartSlice.js";
 const Cart = () => {
   let cartItems = useSelector((store) => store.cart.cartItems);
-  console.log(cartItems);
   const dispatch = useDispatch();
   let total = 0;
   cartItems.forEach((obj) => (total += (obj.item.price / 100) * obj.quantity));
@@ -21,7 +20,7 @@ const Cart = () => {
         )}
         <div className="w-full">
           {cartItems.map((ele) => (
-            <ItemCard item={ele.item} className="w-full" />
+            <ItemCard item={ele.item} className="w-full" key={ele.id} />
           ))}
           <h1 className="font-mono text-xl">To Pay: Rs. {total}</h1>
         </div>

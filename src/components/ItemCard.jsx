@@ -16,7 +16,7 @@ const ItemCard = ({ item }) => {
       id="item-card"
       className="flex justify-between items-center rounded-md h-56 mb-2.5 p-2 cursor-pointer hover:bg-slate-200 shadow-md"
     >
-      <div>
+      <div className="w-3/4">
         <h3 className="flex justify-start items-center font-serif">
           <span className="mr-2.5 font-medium leading-4">{item?.name}</span>
           {item?.itemAttribute?.vegClassifier === "NONVEG" ? (
