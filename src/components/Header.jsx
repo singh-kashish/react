@@ -38,6 +38,7 @@ const Header = () => {
           setSearch(input);
           navigate("./");
         }}
+        data-testid="search"
       >
         <input
           type="text"
@@ -54,7 +55,7 @@ const Header = () => {
       </form>
       <p data-testid="isOnline">{networkStatus ? "🟢" : "🔴"}</p>
       <div id="links">
-        <ul className="flex justify-between list-none *:p-2.5 *:border-r-[1px] *:border-dashed *:border-gray-400">
+        <ul className="flex justify-between list-none *:p-2.5 *:border-r-[1px] *:border-dashed *:border-gray-400" data-testid="linksAtHeader">
           <li>
             <Link to="/about">About</Link>
           </li>
